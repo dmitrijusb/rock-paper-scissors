@@ -6,24 +6,27 @@ function getComputerChoice() {
 
 // Function to play one round
 function playRound(playerSelection, computerSelection) {
-  playerSelection = playerSelection.toLowerCase();
-  computerSelection = computerSelection.toLowerCase();
+  playerSelection =
+    playerSelection[0].toUpperCase() + playerSelection.slice(1).toLowerCase();
+  computerSelection =
+    computerSelection[0].toUpperCase() +
+    computerSelection.slice(1).toLowerCase();
 
-  if (playerSelection == computerSelection) return "It's a Tie!";
   // Player wins logic
-  else if (playerSelection == "rock" && computerSelection == "scissors")
-    return "You Won! Rock beats Scissors";
-  else if (playerSelection == "paper" && computerSelection == "rock")
-    return "You Won! Paper beats Rock";
-  else if (playerSelection == "scissors" && computerSelection == "paper")
-    return "You Won! Scissors beats Paper";
+  if (
+    (playerSelection == "Rock" && computerSelection == "Scissors") ||
+    (playerSelection == "Paper" && computerSelection == "Rock") ||
+    (playerSelection == "Scissors" && computerSelection == "Paper")
+  )
+    return `You Won! ${playerSelection} beats ${computerSelection}`;
   // Computer wins logic
-  else if (computerSelection == "rock" && playerSelection == "scissors")
-    return "You Lost! Rock beats Scissors";
-  else if (computerSelection == "paper" && playerSelection == "rock")
-    return "You Lost! Paper beats Rock";
-  else if (computerSelection == "scissors" && playerSelection == "paper")
-    return "You Lost! Scissors beats Paper";
+  else if (
+    (computerSelection == "Rock" && playerSelection == "Scissors") ||
+    (computerSelection == "Paper" && playerSelection == "Rock") ||
+    (computerSelection == "Scissors" && playerSelection == "Paper")
+  )
+    return `You Lost! ${computerSelection} beats ${playerSelection}`;
+  else return "It's a Tie!";
 }
 
 // Function to Run 5 games and count wins
@@ -49,8 +52,6 @@ function game() {
       `Congratulations, you've won ${counter} out of ${totalGames} games!`
     );
   else {
-    console.log(`You've lost all 5 games!`);
+    console.log(`You've lost all ${totalGames} games!`);
   }
 }
-
-game();
