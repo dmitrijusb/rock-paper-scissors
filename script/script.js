@@ -9,12 +9,20 @@ function playRound(playerSelection, computerSelection) {
   playerSelection = playerSelection.toLowerCase();
   computerSelection = computerSelection.toLowerCase();
 
+  // Testing purpose
   console.log(playerSelection);
   console.log(computerSelection);
 
-  if (playerSelection == "rock" && computerSelection == "scissors")
-    return "You won! Rock beats Scissors!";
+  if (playerSelection == computerSelection) return false;
+  else if (
+    (playerSelection == "rock" && computerSelection == "scissors") ||
+    (playerSelection == "paper" && computerSelection == "rock") ||
+    (playerSelection == "scissors" && computerSelection == "paper")
+  )
+    return true;
+  return false;
 }
 
-let selection = "Rock";
-console.log(playRound(selection, getComputerChoice()));
+let playerSelection = "rock";
+let computerSelection = getComputerChoice();
+console.log(playRound(playerSelection, computerSelection));
