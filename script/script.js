@@ -9,15 +9,21 @@ function playRound(playerSelection, computerSelection) {
   playerSelection = playerSelection.toLowerCase();
   computerSelection = computerSelection.toLowerCase();
 
-  console.log(playerSelection);
-  console.log(computerSelection);
-
-  if (
-    (playerSelection == "rock" && computerSelection == "scissors") ||
-    (playerSelection == "paper" && computerSelection == "rock") ||
-    (playerSelection == "scissors" && computerSelection == "paper")
-  )
-    return true;
+  if (playerSelection == computerSelection) return "It's a Tie!";
+  // Player wins logic
+  else if (playerSelection == "rock" && computerSelection == "scissors")
+    return "You Won! Rock beats Scissors";
+  else if (playerSelection == "paper" && computerSelection == "rock")
+    return "You Won! Paper beats Rock";
+  else if (playerSelection == "scissors" && computerSelection == "paper")
+    return "You Won! Scissors beats Paper";
+  // Computer wins logic
+  else if (computerSelection == "rock" && playerSelection == "scissors")
+    return "You Lost! Rock beats Scissors";
+  else if (computerSelection == "paper" && playerSelection == "rock")
+    return "You Lost! Paper beats Rock";
+  else if (computerSelection == "scissors" && playerSelection == "paper")
+    return "You Lost! Scissors beats Paper";
 }
 
 // Function to Run 5 games and count wins
@@ -29,9 +35,13 @@ function game() {
   for (let index = 0; index < totalGames; index++) {
     let computerSelection = getComputerChoice();
     let playerSelection = prompt("Please enter your selection");
-    if (playRound(playerSelection, computerSelection)) {
+    let playGame = playRound(playerSelection, computerSelection);
+
+    if (playGame.includes("Tie")) console.log(playGame);
+    else if (playGame.includes("Won")) {
+      console.log(playGame);
       counter++;
-    }
+    } else console.log(playGame);
   }
 
   if (counter > 0)
