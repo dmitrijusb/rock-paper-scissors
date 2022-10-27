@@ -33,7 +33,7 @@ function playRound(playerSelection, computerSelection) {
 function game() {
   let totalGames = 5;
   let counter = 0;
-  console.log("Welcome, let's play 5 games!");
+  console.log(`Welcome, let's play ${totalGames} games!`);
 
   for (let index = 0; index < totalGames; index++) {
     let computerSelection = getComputerChoice();
