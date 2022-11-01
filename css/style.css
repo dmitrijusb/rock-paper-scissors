@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 800px;
+  margin: 0 auto;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+/* Players section */
+.players-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.players-align {
+  text-align: center;
+}
+
+/* Text section */
+.text-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Choices/Images section */
+
+.images-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.images {
+  width: 200px;
+}

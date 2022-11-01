@@ -55,3 +55,33 @@ function game() {
     console.log(`You've lost all ${totalGames} games!`);
   }
 }
+
+//////////////////////////////////////////////////////
+////////////////////////DOM///////////////////////////
+//////////////////////////////////////////////////////
+
+// //Variables
+// const image = document.querySelectorAll(".images");
+
+// //console.log(playRound("Paper", getComputerChoice()));
+// const buttons = document.querySelectorAll("button");
+// // We can loop through queryselectorall as an array
+// for (let i = 0; i < buttons.length; i++) {
+//   buttons[i].addEventListener("click", playersChoice);
+// }
+
+// //srcElement
+// // :
+// // button.btn.btn--paper
+
+// function playersChoice(e) {
+//   const computerChoice = getComputerChoice();
+//   const playerChoice = e.target.textContent;
+
+//   document.querySelector(".game-text").textContent = playRound(
+//     playerChoice,
+//     computerChoice
+//   );
+//   image[0].src = `images/${playerChoice}.svg`;
+//   image[1].src = `images/${computerChoice}.svg`;
+// }
