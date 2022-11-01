@@ -21,38 +21,50 @@ function getComputerChoice() {
 
 // Function to play one round
 function playRound(e) {
-  const computerSelection = getComputerChoice();
-  const playerSelection = e.target.textContent;
+  if (!checkWinner()) {
+    const computerSelection = getComputerChoice();
+    const playerSelection = e.target.textContent;
 
-  // Player wins logic
-  if (
-    (playerSelection == "Rock" && computerSelection == "Scissors") ||
-    (playerSelection == "Paper" && computerSelection == "Rock") ||
-    (playerSelection == "Scissors" && computerSelection == "Paper")
-  ) {
-    textBox.textContent = `You Won! ${playerSelection} beats ${computerSelection}`;
-    scores.player += 1;
-    playerScoreText.textContent = scores.player;
+    // Player wins logic
+    if (
+      (playerSelection == "Rock" && computerSelection == "Scissors") ||
+      (playerSelection == "Paper" && computerSelection == "Rock") ||
+      (playerSelection == "Scissors" && computerSelection == "Paper")
+    ) {
+      textBox.textContent = `You Won! ${playerSelection} beats ${computerSelection}`;
+      scores.player += 1;
+      playerScoreText.textContent = scores.player;
+    }
+
+    // Computer wins logic
+    else if (
+      (computerSelection == "Rock" && playerSelection == "Scissors") ||
+      (computerSelection == "Paper" && playerSelection == "Rock") ||
+      (computerSelection == "Scissors" && playerSelection == "Paper")
+    ) {
+      textBox.textContent = `You Lost! ${computerSelection} beats ${playerSelection}`;
+      scores.computer += 1;
+      computerScoreText.textContent = scores.computer;
+    } else textBox.textContent = "It's a Tie!";
+
+    //Showing images for each choice
+    playerImage.classList.add("mirror-image");
+    playerImage.src = `images/${playerSelection}.svg`;
+    computerImage.src = `images/${computerSelection}.svg`;
   }
-
-  // Computer wins logic
-  else if (
-    (computerSelection == "Rock" && playerSelection == "Scissors") ||
-    (computerSelection == "Paper" && playerSelection == "Rock") ||
-    (computerSelection == "Scissors" && playerSelection == "Paper")
-  ) {
-    textBox.textContent = `You Lost! ${computerSelection} beats ${playerSelection}`;
-    scores.computer += 1;
-    computerScoreText.textContent = scores.computer;
-  } else textBox.textContent = "It's a Tie!";
-
-  //Showing images for each choice
-  playerImage.classList.add("mirror-image");
-  playerImage.src = `images/${playerSelection}.svg`;
-  computerImage.src = `images/${computerSelection}.svg`;
 }
 
 //Function to check the winner
+
+function checkWinner() {
+  if (scores.player == 5) {
+    alert("Player Won");
+    return true;
+  } else if (scores.computer == 5) {
+    alert("Computer won!");
+    return true;
+  } else return false;
+}
 
 // Function to Run 5 games and count wins
 function game() {
